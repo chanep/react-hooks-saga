@@ -11,7 +11,7 @@ import {
 import { MovieIcon } from "../../icons/index";
 import styles from "./style";
 
-export default () => {
+export default ({ history }) => {
   const [searchText, setSearchText] = useState("");
   const classes = styles();
 
@@ -20,11 +20,11 @@ export default () => {
   };
 
   const handleCleanTextClick = e => {
-    console.log("10");
+    setSearchText("");
   };
 
   const handleSearchTextClick = e => {
-    console.log("10");
+    history.push(`/results?movieName=${searchText}`);
   };
 
   return (
@@ -33,6 +33,9 @@ export default () => {
         <Grid container className={classes.titleGridContainer}>
           <Grid>
             <Typography className={classes.title}>Bienvenido!</Typography>
+            <Typography variant="h6">
+              Busca tu pelicula con la api de IMDb
+            </Typography>
           </Grid>
           <Grid>
             <MovieIcon className={classes.movieIcon} />
